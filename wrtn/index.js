@@ -4,7 +4,7 @@ const EventSource = require("eventsource");
 const mixpanel = require("mixpanel-browser");
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
-mixpanel.init("78c86210f74e622ec77ded5882a5762b"); // https://wrtn.ai/__env.b7229d14.js
+mixpanel.init("78c86210f74e622ec77ded5882a5762b");
 
 /**
  * @param {string} message
@@ -82,9 +82,6 @@ function getHeaders() {
     }
 }
 
-/**
- * https://developer-cdn.wrtn.ai/sdk.js
- */
 function getWrtnId() {
     let NanoID = crypto.getRandomValues(new Uint8Array(21)).reduce((c,b)=>c + (36 > (b &= 63) ? b.toString(36) : 62 > b ? (b - 26).toString(36).toUpperCase() : 62 < b ? "-" : "_"), "");
     return `W1.2.30535010064645373612600053736.${NanoID}.${Date.now()}`;
