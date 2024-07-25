@@ -7,7 +7,7 @@ wrtn.ai의 ai 검색 기능
 const { search } = require("./wrtn");
 
 (async () => {
-    const message = await search("대한민국 수도에 대해 알려줘"); // {result: ..., message: ...}
+    const message = await search("대한민국 수도에 대해 알려줘"); // {success: ..., message: ...}
     console.log(message.message);
 })();
 ```
