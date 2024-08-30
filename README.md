@@ -1,5 +1,5 @@
 # ai-search
-wrtn.ai의 ai 검색 기능
+wrtn.ai의 ai 검색 & 답변 기능을 사용할 수 있습니다.
 
 ## 사용 예시
 
