@@ -3,7 +3,8 @@ wrtn.ai의 ai 검색 기능
 
 ## 사용 예시
 
-### 코드
+<details open><summary><h3>코드</h3></summary>
+    
 ```js
 const { wrtn } = require("./wrtn");
 
@@ -26,8 +27,9 @@ const { wrtn } = require("./wrtn");
     }
 })();
 ```
+</details>
 
-### 출력
+<details open><summary><h3>출력</h3></summary>
 
 ```markdown
 전송에 성공했어요.
@@ -68,3 +70,4 @@ Golang의 가장 큰 장점 중 하나는 동시성 프로그래밍을 쉽게 �
 
 Golang은 간결하고 효율적인 프로그래밍을 가능하게 하며, 특히 동시성 프로그래밍에서 강력한 성능을 발휘합니다. Go 언어의 특징과 장점을 이해하면, 다양한 개발 환경에서 효과적으로 활용할 수 있습니다. Go 를 배우고 활용하는 것은 현대 소프트웨어 개발에서 큰 도움이 될 것입니다.
 ```
+</details>
