@@ -128,6 +128,11 @@ exports.wrtn = class wrtn {
         });
     }
 
+    disconnect() {
+        if(this.client && this.client.readyState == WebSocket.OPEN) this.client.close();
+        return;
+    }
+
 
     sendMessage(message) {
         if(this.client.readyState == WebSocket.OPEN && !this.sent) {
