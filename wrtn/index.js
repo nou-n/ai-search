@@ -117,22 +117,33 @@ exports.wrtn = class wrtn {
             this.client.addEventListener("message", (event) => {
                 let data = event.data;
                 if(data == "2") this.client.send("3");
+                if(data.startsWith("0{")) this.client.send("40/v1/guest-chat,{}");
             });
             this.client.onopen = async () => {
-                this.client.send("40/v1/guest-chat,{}");
                 const chat = await this.#getChatId();
                 this.chat_id = chat.message.chat_id;
                 const enter = await this.#enterGuestChat();
+                console.log(this.chat_id);
                 resolve(enter);
             }
         });
     }
 
-    disconnect() {
-        if(this.client && this.client.readyState == WebSocket.OPEN) this.client.close();
-        return;
+    async disconnect() {
+        if(this.client && this.client.readyState == WebSocket.OPEN && this.chat_id) {
+            this.client.close();
+            const deleteRequest = await axios.delete(`https://william.wow.wrtn.ai/guest-chat/${this.chat_id}`, {
+                headers: {
+                    ...this.headers,
+                    "Accept": "application/json, text/plain, */*",
+                    "Mixpanel-Distinct-Id": this.distinct_id,
+                    "X-Wrtn-Id": this.wrtn_id
+                }
+            });
+            if(deleteRequest.data.result == "SUCCESS") return true;
+        }
+        return false;
     }
-
 
     sendMessage(message) {
         if(this.client.readyState == WebSocket.OPEN && !this.sent) {
